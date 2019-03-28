@@ -22,7 +22,7 @@ function getCert() {
       }
     }
 
-    certReq.open("GET", "https://krypto-brief.merlinschumacher.now.sh/cert/" + url);
+    certReq.open("GET", "/cert/" + url);
     certReq.send();
   } else {
     alert('Diese URL ist nicht valide. Bitte geben Sie eine Adresse im Format "https://www.ct.de" an.')
