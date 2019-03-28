@@ -1,0 +1,25 @@
+{
+	"version": 2,
+	"name": "krypto-brief",
+	"routes": [{
+		"src": "/cert/(.*)",
+		"dest": "index.js" 
+	}, {
+
+		"src": "/cert/(.*)",
+		"dest": "index.js"
+	}],
+	"builds": [{
+		"src": "index.js",
+		"use": "@now/node"
+	},
+	{
+		"src": "index.html",
+		"use": "@now/static"
+	},
+	{
+		"src": "assets/**/*",
+		"use": "@now/static"
+	}
+	]
+}

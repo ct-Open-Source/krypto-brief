@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>c't Krypto-Brief</title>
+    <meta name="description" content="Briefe DSGVO-gerecht verschlüsseln.">
+    <meta name="author" content="c't magazin für computer technik / mls@ct.de ">
+    <script src="assets/autosize.min.js"></script>
+    <script src="assets/baffle.min.js"></script>
+    <script src="assets/base.js"></script>
+    <script src="assets/aes.js"></script>
+    <link rel="stylesheet" href="assets/base.css">
+
+</head>
+
+<body>
+    <header>
+        <h1>
+            c't Krypto-Brief
+        </h1>
+        <p class="tagline">Briefpost DSGVO-konform verschlüsseln.</p>
+
+    </header>
+    <main>
+        <div id="cert_container">
+            <div class="input_container" id="input_url_container">
+            <label for="input_url" >Empfängerwebsite:</label>
+            <input id="input_url" required type="url" placeholder="Geben Sie hier die URL der Empfängerwebsite ein. (etwa https://www.ct.de/)" />
+            </div>
+            <button id="button_get_cert">
+                Zertifikat herunterladen
+            </button>
+         </div>
+        <div class="input_container">
+            <label for="fp_display">Fingerprint:</label>
+            <textarea id="fp_display" class="resize" placeholder="–" readonly></textarea>
+        </div>
+        <textarea id="input_text" class="resize" placeholder="Bitte laden Sie erst das Zertifikat herunter." readonly></textarea>
+        <button id="button_encrypt">
+            Nachricht verschlüsseln
+        </button>
+        <button id="button_print">
+            Nachricht drucken
+        </button>
+        <div id="output_crypted"></div>
+    </main>
+    <footer>
+	    <p>©2019 c't – Magazin für Computer Technik / <a href="https://www.heise.de/ct/impressum.html">Impressum</a> / <a href="https://www.heise.de/Datenschutzerklaerung-der-Heise-Medien-GmbH-Co-KG-4860.html">Datenschutz</a></p>
+    </footer>    
+
+</body>
+</html>

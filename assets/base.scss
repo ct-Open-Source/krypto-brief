@@ -1,0 +1,234 @@
+@import 'destyle';
+/* aleo-700 - latin_latin-ext */
+
+@font-face {
+    font-family: 'Aleo';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Aleo Bold'), local('Aleo-Bold'), url('fonts/aleo-v2-latin_latin-ext-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('fonts/aleo-v2-latin_latin-ext-700.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* cousine-regular - latin_latin-ext */
+
+@font-face {
+    font-family: 'Cousine';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cousine Regular'), local('Cousine-Regular'), url('fonts/cousine-v13-latin_latin-ext-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('fonts/cousine-v13-latin_latin-ext-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* rubik-regular - latin_latin-ext */
+
+@font-face {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Rubik'), local('Rubik-Regular'), url('fonts/rubik-v8-latin_latin-ext-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('fonts/rubik-v8-latin_latin-ext-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+$base-color: #000;
+$contrast-color: lighten($base-color,
+75);
+$valid-color: #6F6;
+$header_base-font-size: 1.75em;
+$heading-scale: .1; // amount of px headings grow from h6 to h1
+html {
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    margin: 1% auto;
+    width: 98%;
+    max-width: 950px;
+}
+
+p {
+    padding-bottom: 1.5em;
+}
+
+@for $index from 1 through 6 {
+    h#{$index} {
+        font-family: 'Aleo', serif;
+        font-size: $header_base-font-size + $heading-scale * (6 - $index);
+        padding: .5em;
+    }
+}
+
+h1 {
+    text-align: center;
+}
+
+footer {
+    font-size: .75rem;
+    color: $contrast-color;
+    padding: 1.5em 0;
+    a {
+        text-decoration: underline;
+    }
+}
+
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+main>* {
+    width: 100%;
+}
+
+#cert_container,
+.input_container {
+    display: flex;
+    align-content: stretch;
+}
+
+#input_text,
+#output_crypted {
+    border: 1px solid $contrast-color;
+    margin-bottom: 1em;
+    border-radius: .25em;
+    padding: 1%;
+    font-family: 'Cousine', monospace;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+#input_text {
+    min-height: 20em;
+}
+
+#input_url {
+    flex-grow: 2;
+    margin-right: 1em;
+}
+
+.input_container {
+    border: 0;
+    border: 1px solid $contrast-color;
+    margin-bottom: 1em;
+    border-radius: .25em;
+    &>label {
+        background-color: lighten($contrast-color, 10);
+        padding: 1%;
+    }
+    &>input {
+        padding: 1%;
+        font-family: 'Cousine', monospace;
+        font-size: 1rem;
+        flex-grow: 2;
+    }
+}
+
+#fp_display.visible {
+    opacity: 1;
+}
+
+#fp_display_container>* {
+    padding: 1em;
+}
+
+#fp_display_container label {
+    background-color: lighten($contrast-color, 10);
+}
+
+#fp_display {
+    opacity: 0;
+    transition-property: background opacity;
+    transition-duration: .5s;
+    transition-timing-function: ease-in;
+    resize: none;
+    width: 100%;
+    &.validfp {
+        background: $valid-color;
+        opacity: 1;
+    }
+}
+
+#input_url_container {
+    flex-grow: 2;
+    margin-right: 2em;
+}
+
+#button_encrypt,
+#output_crypted,
+#button_print {
+    display: none;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: .5s;
+    &.visible {
+        display: block;
+        opacity: 1;
+    }
+}
+
+#output_crypted.visible {
+    min-height: 9em;
+    white-space: pre-wrap
+}
+
+button {
+    padding: 1em;
+    background: $contrast-color;
+    transition-property: background;
+    transition-duration: .5s;
+    border-radius: .25em;
+    margin-bottom: 1em;
+    &:hover {
+        background: lighten($contrast-color, 10);
+    }
+}
+
+@media print {
+    .input_container,
+    button,
+    #input_text,
+    header,
+    footer {
+        display: none !important;
+    }
+    #output_crypted {
+        display: block !important;
+        width: 100%;
+        opacity: 1;
+        border: none;
+        word-break: break-all;
+        font-size: 14pt !important;
+    }
+    main::before {
+        font-size: 45pt !important;
+        content: "\0041\0070\0072\0069\006C\0020\0041\0070\0072\0069\006C\0021\1F61C";
+        position: absolute;
+        transform-origin: 50% 50%;
+        left: 25%;
+        top: 50%;
+        width: 50%;
+        text-align: center;
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 690px) {
+    #cert_container {
+        flex-flow: row wrap;
+    }
+    #input_url_container {
+        margin-right: 0;
+    }
+    #button_get_cert {
+        width:100%;
+    }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "c't-Krypto-Brief",
+  "version": "1.0.0",
+  "description": "Send GDPR compliant smail-mail.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "get-ssl-certificate": "^2.3.2"
+  },
+  "scripts": {
+    "start": "node ."
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "c't Magazin für Computer Technik (mls@ct.de)",
+  "license": "ISC"
+}
